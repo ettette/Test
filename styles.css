@@ -437,6 +437,12 @@ h1, h2, h3 { letter-spacing: -0.018em; }
   margin-bottom: 20px;
 }
 
+.team-card img.full-portrait {
+  aspect-ratio: auto;
+  height: auto;
+  object-fit: contain;
+}
+
 
 .team-card h3 {
   margin-bottom: 5px;
