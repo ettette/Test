@@ -426,3 +426,19 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 
 }
 }
+.value-card,
+.service-card,
+.team-card,
+.placeholder-panel,
+.process-list li {
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+}
+.value-card:nth-child(odd) h3,
+.program-block:nth-child(odd) h2 {
+  color: var(--burgundy);
+}
+
+.value-card:nth-child(even) h3,
+.program-block:nth-child(even) h2 {
+  color: var(--teal);
+}
