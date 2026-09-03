@@ -16,9 +16,9 @@ document.querySelector("#site-header").innerHTML = `
   <header>
     <div class="main-header">
       <div class="container header-inner">
-        <a class="brand" href="index.html" aria-label="Indigenous Futures Initiative home">
-          <span class="brand-seal" aria-hidden="true"><b>IFI</b></span>
-          <span class="brand-words"><strong>Indigenous Futures Initiative</strong></span>
+        <a class="brand" href="index.html" aria-label="Indigenous Future Coalition home">
+          <span class="brand-seal" aria-hidden="true"><b>IFC</b></span>
+          <span class="brand-words"><strong>Indigenous Future Coalition</strong></span>
         </a>
         <div class="header-actions">
           <a href="communities.html"><strong>Work with us</strong></a>
@@ -37,7 +37,7 @@ document.querySelector("#site-footer").innerHTML = `
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <p class="footer-brand">Indigenous Futures<br><span>Initiative</span></p>
+        <p class="footer-brand">Indigenous Future<br><span>Coalition</span></p>
         <p class="footer-summary">A Bay Area student-led organization working with Native communities through tutoring, STEM, engineering, test preparation, and other community-led projects.</p>
       </div>
       <div>
@@ -55,7 +55,7 @@ document.querySelector("#site-footer").innerHTML = `
       </div>
     </div>
     <div class="footer-bottom"><div class="container">
-      <span>© <span id="year"></span> Indigenous Futures Initiative</span>
+      <span>© <span id="year"></span> Indigenous Future Coalition</span>
       
     </div></div>
   </footer>
