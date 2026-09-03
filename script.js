@@ -21,8 +21,8 @@ document.querySelector("#site-header").innerHTML = `
           <span class="brand-words"><strong>Indigenous Futures Initiative</strong></span>
         </a>
         <div class="header-actions">
-          <a href="communities.html"><small>Communities</small><strong>Work with us</strong></a>
-          <a href="volunteer.html"><small>Students</small><strong>Volunteer with us</strong></a>
+          <a href="communities.html"><strong>Work with us</strong></a>
+          <a href="volunteer.html"><strong>Volunteer with us</strong></a>
           <a class="contact-button" href="contact.html">Contact us</a>
         </div>
         <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
