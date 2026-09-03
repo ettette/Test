@@ -440,12 +440,12 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 
 .value-card:nth-child(even) h3,
 .program-block:nth-child(even) h2 {
-  color: var(--teal);
+  color: var(--gold);
 }
 .process-list li:nth-child(odd) h3 {
   color: var(--burgundy);
 }
 
 .process-list li:nth-child(even) h3 {
-  color: var(--teal);
+  color: var(--gold);
 }
