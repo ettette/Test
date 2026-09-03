@@ -18,7 +18,7 @@ document.querySelector("#site-header").innerHTML = `
       <div class="container header-inner">
         <a class="brand" href="index.html" aria-label="Indigenous Futures Initiative home">
           <span class="brand-seal" aria-hidden="true"><b>IFI</b></span>
-          <span class="brand-words"><strong>Indigenous Futures</strong><small>Initiative</small></span>
+          <span class="brand-words"><strong>Indigenous Futures Initiative</strong></span>
         </a>
         <div class="header-actions">
           <a href="communities.html"><small>Communities</small><strong>Work with us</strong></a>
