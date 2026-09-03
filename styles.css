@@ -30,7 +30,13 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 .utility-bar { background: var(--brown); color: #fff; font-size: .73rem; }
 .utility-inner { height: 34px; display: flex; align-items: center; justify-content: space-between; }
 .main-header { background: #fff; }
-.header-inner { min-height: 104px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+.header-inner { 
+  min-height: 82px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 28px; 
+}
 .brand { display: flex; align-items: center; gap: 13px; min-width: 280px; }
 .brand-seal {
   width: 58px; height: 58px; border: 3px solid var(--burgundy); border-radius: 50%;
