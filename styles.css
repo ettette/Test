@@ -20,33 +20,44 @@ body {
   background: #fff;
   font-family: "Lato", sans-serif;
   line-height: 1.6;
-  animation: page-enter .38s cubic-bezier(.22, .8, .3, 1) both;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: linear-gradient(110deg, #542629, var(--burgundy) 54%, #214f51);
+  transform: translate3d(102%, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
+  animation: page-reveal .48s cubic-bezier(.65, 0, .35, 1) both;
+}
+
+body.page-leaving::after {
+  animation: page-cover .36s cubic-bezier(.65, 0, .35, 1) both;
 }
 
 body.page-leaving {
-  animation: page-exit .22s cubic-bezier(.55, 0, .8, .2) both;
   pointer-events: none;
 }
 
-@keyframes page-enter {
+@keyframes page-reveal {
   from {
-    opacity: 0;
-    transform: translateY(12px);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(102%, 0, 0);
   }
 }
 
-@keyframes page-exit {
+@keyframes page-cover {
   from {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(-102%, 0, 0);
   }
   to {
-    opacity: 0;
-    transform: translateY(-8px);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -55,9 +66,8 @@ button, input, select, textarea {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body,
-  body.page-leaving {
-    animation: none;
+  body::after {
+    display: none;
   }
 }
 
