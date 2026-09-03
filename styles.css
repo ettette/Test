@@ -303,8 +303,22 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 .footer-grid a, .footer-grid p { font-size: .8rem; color: #ece4df; margin-bottom: 0; }
 .footer-grid a { align-self: flex-start; }
 .footer-grid a:not(.footer-button):hover { color: #fff; transform: translateX(3px); }
-.footer-button { align-self: flex-start; border: 1px solid #d5a95b; color: #f2cf84 !important; padding: 9px 12px; margin-top: 10px; border-radius: var(--radius); }
-.footer-button:hover { background: #d5a95b; color: var(--brown) !important; transform: translateY(-2px); }
+.footer-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  background: var(--gold);
+  color: var(--brown) !important;
+  padding: 10px 15px;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-weight: 800;
+  box-shadow: 0 7px 18px rgba(0,0,0,.18);
+}
+.footer-button::after { content: "\2192"; transition: transform .2s ease; }
+.footer-button:hover { background: #efbd59; color: var(--brown) !important; transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,.24); }
+.footer-button:hover::after { transform: translateX(3px); }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,.16); padding: 18px 0; color: #aa9c94; font-size: .67rem; }
 .footer-bottom > div { display: flex; justify-content: space-between; gap: 30px; }
 
