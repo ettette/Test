@@ -111,9 +111,20 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 .plain-heading { display: grid; grid-template-columns: 1.25fr 1fr; gap: 70px; align-items: end; margin-bottom: 40px; }
 .plain-heading h2 { font-size: 2.25rem; line-height: 1.16; margin: 8px 0 0; }
 .plain-heading > p { color: var(--muted); line-height: 1.72; margin: 0; }
-.-grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-.-card { padding: 30px 25px; border-right: 1px solid var(--line); }
-.-card:last-child { border-right: 0; }
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.service-card {
+  background: #fff;
+  padding: 32px 28px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 18px rgba(0,0,0,.08);
+  min-height: 280px;
+}
 .-card h3 { color: var(--burgundy); font-size: 1rem; line-height: 1.3; margin-bottom: 10px; }
 .-card p { font-size: .84rem; color: var(--muted); line-height: 1.62; min-height: 82px; }
 .-card a { color: var(--burgundy); font-size: .76rem; font-weight: 800; }
