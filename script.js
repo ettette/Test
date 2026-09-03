@@ -72,12 +72,7 @@ menuButton.addEventListener("click", () => {
 });
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-const nativePageTransitions = "startViewTransition" in document;
 let pageIsLeaving = false;
-
-if (nativePageTransitions) {
-  document.documentElement.classList.add("native-page-transitions");
-}
 
 document.addEventListener("click", (event) => {
   const link = event.target instanceof Element ? event.target.closest("a") : null;
@@ -92,8 +87,7 @@ document.addEventListener("click", (event) => {
     event.altKey ||
     link.target === "_blank" ||
     link.hasAttribute("download") ||
-    reducedMotion.matches ||
-    nativePageTransitions
+    reducedMotion.matches
   ) {
     return;
   }
@@ -116,7 +110,7 @@ document.addEventListener("click", (event) => {
 
   window.setTimeout(() => {
     window.location.assign(destination.href);
-  }, 140);
+  }, 220);
 });
 
 window.addEventListener("pageshow", () => {
