@@ -349,10 +349,11 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 
 
 .team-role {
-  font-weight: 800;
-  color: var(--teal);
+  color: #c49a3a;
   font-size: .85rem;
-  margin-bottom: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
 }
 
 
