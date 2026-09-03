@@ -113,7 +113,7 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 .page-hero { background: var(--teal); color: #fff; padding: 58px 0; border-bottom: 8px solid var(--gold); }
 .page-hero h1 { font-size: clamp(2.35rem,4.5vw,3.7rem); line-height: 1.08; max-width: 900px; margin-bottom: 16px; }
 .page-hero p { max-width: 790px; margin-bottom: 0; color: #e7f1f1; }
-.eyebrow { font-size: .71rem; text-transform: uppercase; letter-spacing: .12em; font-weight: 800; color: var(--burgundy); margin-bottom: 12px; }
+.eyebrow { font-size: .71rem; text-transform: uppercase; letter-spacing: .12em; font-weight: 800; color: var(--teal); margin-bottom: 12px; }
 .eyebrow.light { color: #f2cf7c; }
 .prose-grid { display: grid; grid-template-columns: .75fr 1.5fr; gap: 80px; }
 .prose-grid h2 { font-size: 2.2rem; }
