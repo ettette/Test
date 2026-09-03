@@ -548,3 +548,10 @@ h1, h2, h3 { letter-spacing: -0.018em; }
   transform: translateY(-2px);
   opacity: .9;
 }
+.service-card:nth-child(odd) h3 {
+  color: var(--burgundy);
+}
+
+.service-card:nth-child(even) h3 {
+  color: var(--teal);
+}
