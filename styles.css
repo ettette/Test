@@ -372,31 +372,42 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 }
 .program-block {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 45px;
   align-items: center;
-  margin-bottom: 80px;
+
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 35px;
+
+  margin-bottom: 35px;
 }
+
 
 .program-block.reverse .program-image {
   order: 2;
 }
 
+
 .program-image img {
   width: 100%;
-  height: 380px;
+  height: 320px;
   object-fit: cover;
   border-radius: var(--radius);
 }
 
+
 .program-content h2 {
   color: var(--burgundy);
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 1.8rem;
+  margin-bottom: 18px;
 }
 
+
 .program-content ul {
-  padding-left: 20px;
+  margin: 0;
+  padding-left: 22px;
   color: var(--muted);
   line-height: 1.8;
 }
@@ -413,4 +424,5 @@ h1, h2, h3 { letter-spacing: -0.018em; }
     order: initial;
   }
 
+}
 }
