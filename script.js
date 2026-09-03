@@ -70,3 +70,50 @@ menuButton.addEventListener("click", () => {
   menuButton.setAttribute("aria-expanded", String(!open));
   mobileNav.classList.toggle("open", !open);
 });
+
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+let pageIsLeaving = false;
+
+document.addEventListener("click", (event) => {
+  const link = event.target instanceof Element ? event.target.closest("a") : null;
+  if (
+    !link ||
+    pageIsLeaving ||
+    event.defaultPrevented ||
+    event.button !== 0 ||
+    event.metaKey ||
+    event.ctrlKey ||
+    event.shiftKey ||
+    event.altKey ||
+    link.target === "_blank" ||
+    link.hasAttribute("download") ||
+    reducedMotion.matches
+  ) {
+    return;
+  }
+
+  const destination = new URL(link.href, window.location.href);
+  const current = new URL(window.location.href);
+  const isInternalPage =
+    destination.origin === current.origin &&
+    (destination.pathname.endsWith(".html") || destination.pathname.endsWith("/"));
+  const isSamePageAnchor =
+    destination.pathname === current.pathname &&
+    destination.search === current.search &&
+    destination.hash;
+
+  if (!isInternalPage || isSamePageAnchor) return;
+
+  event.preventDefault();
+  pageIsLeaving = true;
+  document.body.classList.add("page-leaving");
+
+  window.setTimeout(() => {
+    window.location.assign(destination.href);
+  }, 300);
+});
+
+window.addEventListener("pageshow", () => {
+  pageIsLeaving = false;
+  document.body.classList.remove("page-leaving");
+});

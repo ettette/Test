@@ -20,10 +20,50 @@ body {
   background: #fff;
   font-family: "Lato", sans-serif;
   line-height: 1.6;
+  animation: page-enter .42s cubic-bezier(.22, .8, .28, 1) both;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: linear-gradient(110deg, var(--burgundy-dark), var(--burgundy) 52%, var(--teal-dark));
+  animation: page-reveal .48s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-leaving::after {
+  animation: page-cover .3s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+@keyframes page-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes page-reveal {
+  from { transform: translateX(0); }
+  to { transform: translateX(102%); }
+}
+
+@keyframes page-cover {
+  from { transform: translateX(-102%); }
+  to { transform: translateX(0); }
 }
 
 button, input, select, textarea {
   font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
+
+  body::after {
+    display: none;
+  }
 }
 
 h1, h2, h3 {
