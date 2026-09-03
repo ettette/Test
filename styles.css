@@ -450,3 +450,16 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 .process-list li:nth-child(even) h3 {
   color: var(--teal);
 }
+.google-form {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-top: 35px;
+  box-shadow: 0 4px 18px rgba(0,0,0,.08);
+}
+
+.google-form iframe {
+  width: 100%;
+  border: none;
+}
