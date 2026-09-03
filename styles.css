@@ -17,47 +17,40 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   color: var(--ink);
-  background: #fff;
+  background: #f8f6f1;
   font-family: "Lato", sans-serif;
   line-height: 1.6;
 }
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  background: linear-gradient(110deg, #542629, var(--burgundy) 54%, #214f51);
-  transform: translate3d(102%, 0, 0);
-  will-change: transform;
-  backface-visibility: hidden;
-  animation: page-reveal .48s cubic-bezier(.65, 0, .35, 1) both;
+main {
+  background: #fff;
+  animation: content-enter .34s cubic-bezier(.22, .8, .3, 1) both;
 }
 
-body.page-leaving::after {
-  animation: page-cover .36s cubic-bezier(.65, 0, .35, 1) both;
-}
-
-body.page-leaving {
+body.page-leaving main {
+  animation: content-exit .18s ease-in both;
   pointer-events: none;
 }
 
-@keyframes page-reveal {
+@keyframes content-enter {
   from {
-    transform: translate3d(0, 0, 0);
+    opacity: 0;
+    transform: translateY(7px);
   }
   to {
-    transform: translate3d(102%, 0, 0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes page-cover {
+@keyframes content-exit {
   from {
-    transform: translate3d(-102%, 0, 0);
+    opacity: 1;
+    transform: translateY(0);
   }
   to {
-    transform: translate3d(0, 0, 0);
+    opacity: 0;
+    transform: translateY(-5px);
   }
 }
 
@@ -66,8 +59,9 @@ button, input, select, textarea {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body::after {
-    display: none;
+  main,
+  body.page-leaving main {
+    animation: none;
   }
 }
 

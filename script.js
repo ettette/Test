@@ -110,7 +110,7 @@ document.addEventListener("click", (event) => {
 
   window.setTimeout(() => {
     window.location.assign(destination.href);
-  }, 360);
+  }, 180);
 });
 
 window.addEventListener("pageshow", () => {
