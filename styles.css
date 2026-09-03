@@ -381,8 +381,25 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 
 /* Homepage updates */
 .community-process-section .about-band-grid { margin-bottom: 42px; }
-.community-process-section .simple-steps { background: #fff; }
-.community-process-section .simple-steps li { background: #fff; }
+.community-process-section .simple-steps {
+  background: linear-gradient(145deg, #fff 0%, #fff 72%, #f6f3ed 100%);
+  padding: 10px;
+  clip-path: polygon(
+    12px 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    12px 100%,
+    0 calc(100% - 12px),
+    0 12px
+  );
+  filter: drop-shadow(0 10px 16px rgba(47, 32, 25, .12));
+}
+.community-process-section .simple-steps li {
+  background: transparent;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,.85);
+}
 .community-process-section .about-band-grid > div > p:last-child { max-width: 520px; margin-bottom: 0; }
 
 @media (max-width: 1000px) {
