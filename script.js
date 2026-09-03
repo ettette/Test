@@ -53,7 +53,7 @@ document.querySelector("#site-footer").innerHTML = `
       <div>
         <p class="footer-label">Contact</p>
         <p>Bay Area, California</p>
-        <a href="mailto:lucashhcai@gmail.com">lucashhcai@gmail.com</a>
+        <a href="mailto:indigenousfuturecoalition@gmail.com">indigenousfuturecoalition@gmail.com</a>
         <a class="footer-button" href="contact.html">Contact us</a>
       </div>
     </div>
