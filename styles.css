@@ -416,7 +416,7 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 }
 
