@@ -31,16 +31,16 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 .utility-inner { height: 34px; display: flex; align-items: center; justify-content: space-between; }
 .main-header { background: #fff; }
 .header-inner { 
-  min-height: 82px; 
+  min-height: 70px; 
   display: flex; 
   align-items: center; 
   justify-content: space-between; 
-  gap: 28px; 
+  gap: 20px; 
 }
 .brand { display: flex; align-items: center; gap: 13px; min-width: 280px; }
 .brand-seal {
-  width: 52px;
-  height: 52px;
+  width: 43px;
+  height: 43px;
   border: 3px solid var(--burgundy);
   border-radius: 50%;
   display: grid;
@@ -51,13 +51,27 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 .brand-seal b { font-size: 1rem; line-height: 1; letter-spacing: .04em; }
 .brand-seal small { font-size: .48rem; font-weight: 800; letter-spacing: .08em; position: absolute; bottom: 7px; }
 .brand-words { display: flex; flex-direction: column; text-transform: uppercase; }
-.brand-words strong { font-size: 1.08rem; letter-spacing: .035em; }
+.brand-words strong { 
+  font-size: .9rem; 
+  letter-spacing: .035em; 
+}
 .brand-words small { font-size: .72rem; letter-spacing: .085em; color: var(--muted); margin-top: 2px; }
-.header-actions { display: flex; align-items: center; gap: 26px; }
+.header-actions { 
+  display: flex; 
+  align-items: center; 
+  gap: 18px; 
+}
 .header-actions > a:not(.contact-button) { display: flex; flex-direction: column; padding-left: 27px; border-left: 1px solid var(--line); }
 .header-actions small { color: var(--muted); font-size: .68rem; }
 .header-actions strong { color: var(--burgundy); font-size: .83rem; margin-top: 2px; }
-.contact-button { border: 2px solid var(--burgundy); color: var(--burgundy); padding: 10px 16px; border-radius: var(--radius); font-size: .8rem; font-weight: 800; }
+.contact-button { 
+  border: 2px solid var(--burgundy); 
+  color: var(--burgundy); 
+  padding: 8px 14px; 
+  border-radius: var(--radius); 
+  font-size: .75rem; 
+  font-weight: 800; 
+}
 .contact-button:hover { background: var(--burgundy); color: #fff; }
 .nav-bar { background: var(--burgundy); }
 .desktop-nav { min-height: 54px; display: flex; align-items: stretch; justify-content: flex-end; }
