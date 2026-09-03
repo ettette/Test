@@ -39,8 +39,14 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 }
 .brand { display: flex; align-items: center; gap: 13px; min-width: 280px; }
 .brand-seal {
-  width: 58px; height: 58px; border: 3px solid var(--burgundy); border-radius: 50%;
-  display: grid; place-items: center; position: relative; color: var(--burgundy);
+  width: 52px;
+  height: 52px;
+  border: 3px solid var(--burgundy);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  position: relative;
+  color: var(--burgundy);
 }
 .brand-seal b { font-size: 1rem; line-height: 1; letter-spacing: .04em; }
 .brand-seal small { font-size: .48rem; font-weight: 800; letter-spacing: .08em; position: absolute; bottom: 7px; }
