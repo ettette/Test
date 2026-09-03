@@ -438,8 +438,8 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 }
 
 .team-card img.full-portrait {
-  object-fit: contain;
-  object-position: center;
+  object-fit: cover;
+  object-position: center top;
 }
 
 
