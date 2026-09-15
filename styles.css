@@ -501,6 +501,16 @@ h1, h2, h3 { letter-spacing: -0.018em; }
   align-items: start;
 }
 
+.volunteer-heading {
+  margin-top: 64px;
+}
+
+.volunteer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 
 .team-card {
   position: relative;
@@ -536,6 +546,14 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 .team-card img.full-portrait {
   object-fit: cover;
   object-position: center top;
+}
+
+.volunteer-card .team-role {
+  margin-bottom: 0;
+}
+
+.volunteer-card {
+  flex: 0 1 calc((100% - 66px) / 4);
 }
 
 
@@ -610,12 +628,24 @@ h1, h2, h3 { letter-spacing: -0.018em; }
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .volunteer-card {
+    flex-basis: calc((100% - 44px) / 3);
+  }
+
 }
 
 @media(max-width:680px){
 
   .team-grid {
     grid-template-columns: 1fr;
+  }
+
+  .volunteer-heading {
+    margin-top: 48px;
+  }
+
+  .volunteer-card {
+    flex-basis: 100%;
   }
 
 }
