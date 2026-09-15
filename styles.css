@@ -553,7 +553,7 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 }
 
 .volunteer-card {
-  flex: 0 1 calc((100% - 44px) / 3);
+  flex: 0 1 calc((100% - 66px) / 4);
 }
 
 
@@ -629,7 +629,7 @@ h1, h2, h3 { letter-spacing: -0.018em; }
   }
 
   .volunteer-card {
-    flex-basis: calc((100% - 22px) / 2);
+    flex-basis: calc((100% - 44px) / 3);
   }
 
 }
