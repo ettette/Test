@@ -553,7 +553,7 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 }
 
 .volunteer-card {
-  flex: 0 1 calc((100% - 66px) / 4);
+  flex: 0 1 calc((100% - 44px) / 3);
 }
 
 
@@ -626,10 +626,6 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 
   .team-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .volunteer-card {
-    flex-basis: calc((100% - 44px) / 3);
   }
 
 }
