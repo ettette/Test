@@ -120,3 +120,52 @@ window.addEventListener("pageshow", () => {
   pageIsLeaving = false;
   document.body.classList.remove("page-leaving");
 });
+
+const countdown = document.querySelector("[data-countdown]");
+if (countdown) {
+  const dateLabel = document.querySelector("[data-countdown-date]");
+  const daysValue = document.querySelector("[data-countdown-days]");
+  const hoursValue = document.querySelector("[data-countdown-hours]");
+  const minutesValue = document.querySelector("[data-countdown-minutes]");
+  const secondsValue = document.querySelector("[data-countdown-seconds]");
+
+  const getIndigenousPeoplesDay = (year) => {
+    const octoberFirst = new Date(year, 9, 1);
+    const daysUntilMonday = (8 - octoberFirst.getDay()) % 7;
+    return new Date(year, 9, 1 + daysUntilMonday + 7);
+  };
+
+  const formatDate = (date) =>
+    date.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+
+  const updateCountdown = () => {
+    const now = new Date();
+    let target = getIndigenousPeoplesDay(now.getFullYear());
+    target.setHours(0, 0, 0, 0);
+
+    if (now > target) {
+      target = getIndigenousPeoplesDay(now.getFullYear() + 1);
+      target.setHours(0, 0, 0, 0);
+    }
+
+    const distance = Math.max(target - now, 0);
+    const totalSeconds = Math.floor(distance / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    if (dateLabel) dateLabel.textContent = formatDate(target);
+    if (daysValue) daysValue.textContent = String(days);
+    if (hoursValue) hoursValue.textContent = String(hours).padStart(2, "0");
+    if (minutesValue) minutesValue.textContent = String(minutes).padStart(2, "0");
+    if (secondsValue) secondsValue.textContent = String(seconds).padStart(2, "0");
+  };
+
+  updateCountdown();
+  window.setInterval(updateCountdown, 1000);
+}

@@ -137,6 +137,128 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 .desktop-nav a:hover, .desktop-nav a[aria-current="page"] { background: var(--burgundy-dark); }
 .menu-button, .mobile-nav { display: none; }
 
+.indigenous-day-hero {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background:
+    linear-gradient(110deg, rgba(47, 32, 25, .94), rgba(143, 52, 56, .82) 48%, rgba(47, 115, 118, .7)),
+    url("assets/community-projects.jpg") center 42% / cover no-repeat;
+  padding: 82px 0 72px;
+}
+
+.indigenous-day-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 8px;
+  background: linear-gradient(90deg, var(--gold), var(--teal), var(--burgundy));
+}
+
+.indigenous-day-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(340px, .85fr);
+  gap: 58px;
+  align-items: center;
+}
+
+.indigenous-day-copy h1 {
+  max-width: 780px;
+  margin-bottom: 18px;
+  font-size: clamp(2.45rem, 4.7vw, 4.35rem);
+  line-height: 1.05;
+}
+
+.indigenous-day-copy > p:not(.hero-kicker) {
+  max-width: 720px;
+  margin-bottom: 0;
+  color: #f7ece6;
+  font-size: 1.03rem;
+  line-height: 1.72;
+}
+
+.countdown-panel {
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, .12);
+  box-shadow: 0 20px 46px rgba(0, 0, 0, .22);
+  backdrop-filter: blur(5px);
+}
+
+.countdown-date {
+  margin-bottom: 18px;
+  color: #f8d987;
+  font-size: .82rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.countdown-grid div {
+  min-height: 112px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 18px 16px;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, .9);
+  color: var(--brown);
+}
+
+.countdown-grid strong {
+  display: block;
+  min-width: 4ch;
+  font-size: clamp(2rem, 4vw, 3.05rem);
+  font-weight: 900;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown-grid span {
+  margin-top: 8px;
+  color: var(--burgundy);
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.land-acknowledgement {
+  background: #f9f7f2;
+  border-bottom: 1px solid var(--line);
+  padding: 42px 0;
+}
+
+.land-acknowledgement-inner {
+  display: grid;
+  grid-template-columns: minmax(250px, .82fr) minmax(0, 1.18fr);
+  gap: 54px;
+  align-items: start;
+}
+
+.land-acknowledgement h2 {
+  margin: 8px 0 0;
+  color: var(--burgundy);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  line-height: 1.14;
+}
+
+.land-acknowledgement-inner > p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: .98rem;
+  line-height: 1.8;
+}
+
 .home-hero { min-height: 570px; position: relative; display: flex; align-items: center; background: url("assets/tutoring-group.jpg") center 47% / cover no-repeat; color: #fff; }
 .home-hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(17,26,29,.84), rgba(17,26,29,.58) 46%, rgba(17,26,29,.08) 80%); }
 .home-hero-copy { position: relative; z-index: 1; }
@@ -331,6 +453,8 @@ h1, h2, h3 { letter-spacing: -0.018em; }
   .mobile-nav.open { display: flex; }
   .mobile-nav a { color: #fff; padding: 12px 0; font-weight: 700; }
   .mobile-nav a:hover { transform: translateX(4px); }
+  .indigenous-day-grid, .land-acknowledgement-inner { grid-template-columns: 1fr; gap: 32px; }
+  .indigenous-day-hero { padding: 68px 0 58px; }
   .action-grid { grid-template-columns: 1fr; }
   .action-card { min-height: 90px; }
   .-grid { grid-template-columns: repeat(2,1fr); }
@@ -349,6 +473,13 @@ h1, h2, h3 { letter-spacing: -0.018em; }
   .brand-seal { width: 49px; height: 49px; }
   .brand-words strong { font-size: .88rem; }
   .brand-words small { font-size: .61rem; }
+  .indigenous-day-hero { padding: 54px 0 48px; }
+  .indigenous-day-copy h1 { font-size: 2.48rem; }
+  .countdown-panel { padding: 18px; }
+  .countdown-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+  .countdown-grid div { min-height: 92px; padding: 14px 12px; }
+  .countdown-grid strong { font-size: 2.1rem; }
+  .land-acknowledgement { padding: 34px 0; }
   .home-hero { min-height: 520px; background-position: 60% center; }
   .home-hero::before { background: linear-gradient(90deg, rgba(17,26,29,.9), rgba(17,26,29,.58) 88%); }
   .home-hero h1 { font-size: 2.65rem; }
