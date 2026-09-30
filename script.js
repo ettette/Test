@@ -1,17 +1,63 @@
-const pages = [
-  ["index.html", "Home"],
-  ["about.html", "About"],
-  ["programs.html", "Programs & Support"],
-  ["communities.html", "Working With Communities"],
-  ["volunteer.html", "Volunteer"],
-  ["land-acknowledgement.html", "Land Acknowledgement"],
-  ["contact.html", "Contact"],
+const navItems = [
+  { href: "index.html", label: "Home" },
+  {
+    label: "About",
+    links: [
+      { href: "about.html", label: "About Us" },
+      { href: "land-acknowledgement.html", label: "Land Acknowledgement" },
+    ],
+  },
+  {
+    label: "Get Involved",
+    links: [
+      { href: "programs.html", label: "Programs & Support" },
+      { href: "communities.html", label: "Working With Communities" },
+      { href: "volunteer.html", label: "Volunteer" },
+    ],
+  },
+  { href: "blog.html", label: "Blog" },
+  { href: "contact.html", label: "Contact" },
 ];
 
 const current = location.pathname.split("/").pop() || "index.html";
-const navLinks = pages
-  .map(([href, label]) => `<a href="${href}" ${current === href ? 'aria-current="page"' : ""}>${label}</a>`)
+const renderDesktopNav = (items) =>
+  items
+    .map((item) => {
+      if (!item.links) {
+        return `<a href="${item.href}" ${current === item.href ? 'aria-current="page"' : ""}>${item.label}</a>`;
+      }
+
+      const hasCurrent = item.links.some((link) => current === link.href);
+      const links = item.links
+        .map((link) => `<a href="${link.href}" ${current === link.href ? 'aria-current="page"' : ""}>${link.label}</a>`)
+        .join("");
+
+      return `
+        <div class="nav-item nav-dropdown ${hasCurrent ? "active" : ""}">
+          <button class="nav-trigger" type="button" aria-expanded="false">${item.label}</button>
+          <div class="nav-menu">${links}</div>
+        </div>
+      `;
+    })
+    .join("");
+
+const renderMobileNav = (items) =>
+  items
+    .map((item) => {
+      if (!item.links) {
+        return `<a href="${item.href}" ${current === item.href ? 'aria-current="page"' : ""}>${item.label}</a>`;
+      }
+
+      const links = item.links
+        .map((link) => `<a href="${link.href}" ${current === link.href ? 'aria-current="page"' : ""}>${link.label}</a>`)
+        .join("");
+
+      return `<div class="mobile-nav-group"><span>${item.label}</span>${links}</div>`;
+    })
   .join("");
+
+const desktopNavLinks = renderDesktopNav(navItems);
+const mobileNavLinks = renderMobileNav(navItems);
 
 document.querySelector("#site-header").innerHTML = `
   <header>
@@ -29,8 +75,8 @@ document.querySelector("#site-header").innerHTML = `
         <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
       </div>
     </div>
-    <nav class="nav-bar" aria-label="Main navigation"><div class="container desktop-nav">${navLinks}</div></nav>
-    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">${navLinks}</nav>
+    <nav class="nav-bar" aria-label="Main navigation"><div class="container desktop-nav">${desktopNavLinks}</div></nav>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">${mobileNavLinks}</nav>
   </header>
 `;
 
@@ -51,6 +97,7 @@ document.querySelector("#site-footer").innerHTML = `
         <a href="communities.html">Working with communities</a>
         <a href="volunteer.html">Volunteer</a>
         <a href="land-acknowledgement.html">Land acknowledgement</a>
+        <a href="blog.html">Blog</a>
       </div>
       <div>
         <p class="footer-label">Contact</p>
