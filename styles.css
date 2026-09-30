@@ -133,7 +133,7 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 .contact-button:hover { background: var(--burgundy); color: #fff; box-shadow: 0 7px 16px rgba(143,52,56,.2); }
 .nav-bar { background: var(--burgundy); }
 .desktop-nav { min-height: 54px; display: flex; align-items: stretch; justify-content: flex-end; }
-.desktop-nav a { padding: 0 24px; display: flex; align-items: center; color: #fff; font-size: .82rem; font-weight: 700; }
+.desktop-nav a { padding: 0 clamp(12px, 1.55vw, 24px); display: flex; align-items: center; color: #fff; font-size: .82rem; font-weight: 700; }
 .desktop-nav a:hover, .desktop-nav a[aria-current="page"] { background: var(--burgundy-dark); }
 .menu-button, .mobile-nav { display: none; }
 
@@ -143,7 +143,7 @@ h1, h2, h3 { letter-spacing: -0.018em; }
   color: #fff;
   background:
     linear-gradient(110deg, rgba(47, 32, 25, .94), rgba(143, 52, 56, .82) 48%, rgba(47, 115, 118, .7)),
-    url("assets/community-projects.jpg") center 42% / cover no-repeat;
+    url("assets/indigenous-countdown-bg.png") center 42% / cover no-repeat;
   padding: 82px 0 72px;
 }
 
@@ -252,11 +252,34 @@ h1, h2, h3 { letter-spacing: -0.018em; }
   line-height: 1.14;
 }
 
-.land-acknowledgement-inner > p {
+.land-acknowledgement-inner > p,
+.land-acknowledgement-inner > div > p {
   margin-bottom: 0;
   color: var(--muted);
   font-size: .98rem;
   line-height: 1.8;
+}
+
+.inline-button {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 18px;
+  color: var(--burgundy);
+  font-size: .82rem;
+  font-weight: 900;
+}
+
+.inline-button:hover {
+  color: var(--teal);
+  transform: translateX(3px);
+}
+
+.land-prose p {
+  font-size: 1rem;
+}
+
+.acknowledgement-grid .value-card {
+  min-height: 210px;
 }
 
 .home-hero { min-height: 570px; position: relative; display: flex; align-items: center; background: url("assets/tutoring-group.jpg") center 47% / cover no-repeat; color: #fff; }

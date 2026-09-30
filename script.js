@@ -4,6 +4,7 @@ const pages = [
   ["programs.html", "Programs & Support"],
   ["communities.html", "Working With Communities"],
   ["volunteer.html", "Volunteer"],
+  ["land-acknowledgement.html", "Land Acknowledgement"],
   ["contact.html", "Contact"],
 ];
 
@@ -49,6 +50,7 @@ document.querySelector("#site-footer").innerHTML = `
         <a href="programs.html">Programs and support</a>
         <a href="communities.html">Working with communities</a>
         <a href="volunteer.html">Volunteer</a>
+        <a href="land-acknowledgement.html">Land acknowledgement</a>
       </div>
       <div>
         <p class="footer-label">Contact</p>
