@@ -16,6 +16,7 @@ const navItems = [
     ],
   },
   { href: "blog.html", label: "Blog" },
+  { href: "holidays.html", label: "Holidays" },
   { href: "contact.html", label: "Contact" },
 ];
 
@@ -98,6 +99,7 @@ document.querySelector("#site-footer").innerHTML = `
         <a href="volunteer.html">Volunteer</a>
         <a href="land-acknowledgement.html">Land acknowledgement</a>
         <a href="blog.html">Blog</a>
+        <a href="holidays.html">Indigenous holidays</a>
       </div>
       <div>
         <p class="footer-label">Contact</p>
@@ -114,6 +116,25 @@ document.querySelector("#site-footer").innerHTML = `
 `;
 
 document.querySelector("#year").textContent = new Date().getFullYear();
+
+document.body.classList.add("has-countdown-dock");
+document.body.insertAdjacentHTML(
+  "beforeend",
+  `
+    <aside class="countdown-dock" aria-label="Countdown to Indigenous Peoples' Day">
+      <a class="countdown-dock-main" href="holidays.html">
+        <span class="countdown-dock-label">Indigenous Peoples' Day</span>
+        <strong data-countdown-date>October 12, 2026</strong>
+      </a>
+      <div class="countdown-dock-grid" data-countdown>
+        <span><strong data-countdown-days>0</strong><em>Days</em></span>
+        <span><strong data-countdown-hours>0</strong><em>Hours</em></span>
+        <span><strong data-countdown-minutes>0</strong><em>Min</em></span>
+        <span><strong data-countdown-seconds>0</strong><em>Sec</em></span>
+      </div>
+    </aside>
+  `
+);
 
 const menuButton = document.querySelector(".menu-button");
 const mobileNav = document.querySelector("#mobile-nav");
@@ -170,14 +191,8 @@ window.addEventListener("pageshow", () => {
   document.body.classList.remove("page-leaving");
 });
 
-const countdown = document.querySelector("[data-countdown]");
-if (countdown) {
-  const dateLabel = document.querySelector("[data-countdown-date]");
-  const daysValue = document.querySelector("[data-countdown-days]");
-  const hoursValue = document.querySelector("[data-countdown-hours]");
-  const minutesValue = document.querySelector("[data-countdown-minutes]");
-  const secondsValue = document.querySelector("[data-countdown-seconds]");
-
+const countdowns = document.querySelectorAll("[data-countdown]");
+if (countdowns.length) {
   const getIndigenousPeoplesDay = (year) => {
     const octoberFirst = new Date(year, 9, 1);
     const daysUntilMonday = (8 - octoberFirst.getDay()) % 7;
@@ -195,8 +210,10 @@ if (countdown) {
     const now = new Date();
     let target = getIndigenousPeoplesDay(now.getFullYear());
     target.setHours(0, 0, 0, 0);
+    const targetEnd = new Date(target);
+    targetEnd.setHours(23, 59, 59, 999);
 
-    if (now > target) {
+    if (now > targetEnd) {
       target = getIndigenousPeoplesDay(now.getFullYear() + 1);
       target.setHours(0, 0, 0, 0);
     }
@@ -208,11 +225,21 @@ if (countdown) {
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-    if (dateLabel) dateLabel.textContent = formatDate(target);
-    if (daysValue) daysValue.textContent = String(days);
-    if (hoursValue) hoursValue.textContent = String(hours).padStart(2, "0");
-    if (minutesValue) minutesValue.textContent = String(minutes).padStart(2, "0");
-    if (secondsValue) secondsValue.textContent = String(seconds).padStart(2, "0");
+    document.querySelectorAll("[data-countdown-date]").forEach((element) => {
+      element.textContent = formatDate(target);
+    });
+    document.querySelectorAll("[data-countdown-days]").forEach((element) => {
+      element.textContent = String(days);
+    });
+    document.querySelectorAll("[data-countdown-hours]").forEach((element) => {
+      element.textContent = String(hours).padStart(2, "0");
+    });
+    document.querySelectorAll("[data-countdown-minutes]").forEach((element) => {
+      element.textContent = String(minutes).padStart(2, "0");
+    });
+    document.querySelectorAll("[data-countdown-seconds]").forEach((element) => {
+      element.textContent = String(seconds).padStart(2, "0");
+    });
   };
 
   updateCountdown();
