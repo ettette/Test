@@ -132,6 +132,7 @@ document.body.insertAdjacentHTML(
         <span><strong data-countdown-minutes>0</strong><em>Min</em></span>
         <span><strong data-countdown-seconds>0</strong><em>Sec</em></span>
       </div>
+      <p class="countdown-dock-today" data-countdown-today hidden>Today is Indigenous Peoples' Day</p>
     </aside>
   `
 );
@@ -218,6 +219,7 @@ if (countdowns.length) {
       target.setHours(0, 0, 0, 0);
     }
 
+    const isToday = now >= target && now <= targetEnd;
     const distance = Math.max(target - now, 0);
     const totalSeconds = Math.floor(distance / 1000);
     const days = Math.floor(totalSeconds / 86400);
@@ -226,7 +228,13 @@ if (countdowns.length) {
     const seconds = totalSeconds % 60;
 
     document.querySelectorAll("[data-countdown-date]").forEach((element) => {
-      element.textContent = formatDate(target);
+      element.textContent = isToday ? "Today" : formatDate(target);
+    });
+    document.querySelectorAll("[data-countdown]").forEach((element) => {
+      element.hidden = isToday;
+    });
+    document.querySelectorAll("[data-countdown-today]").forEach((element) => {
+      element.hidden = !isToday;
     });
     document.querySelectorAll("[data-countdown-days]").forEach((element) => {
       element.textContent = String(days);

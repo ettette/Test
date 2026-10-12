@@ -383,6 +383,17 @@ h1, h2, h3 { letter-spacing: -0.018em; }
   text-transform: uppercase;
 }
 
+.countdown-dock-today {
+  justify-self: end;
+  margin-bottom: 0;
+  padding: 12px 16px;
+  border-radius: 6px;
+  background: rgba(217, 163, 58, .18);
+  color: #f8d987;
+  font-size: .88rem;
+  font-weight: 900;
+}
+
 .land-acknowledgement {
   background: #f9f7f2;
   border-bottom: 1px solid var(--line);
@@ -806,6 +817,7 @@ h1, h2, h3 { letter-spacing: -0.018em; }
   .countdown-dock-grid span { min-width: 0; padding: 8px 5px; }
   .countdown-dock-grid strong { font-size: 1.05rem; }
   .countdown-dock-grid em { font-size: .55rem; }
+  .countdown-dock-today { justify-self: stretch; text-align: center; }
   .countdown-panel { padding: 18px; }
   .countdown-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
   .countdown-grid div { min-height: 92px; padding: 14px 12px; }
