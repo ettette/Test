@@ -63,9 +63,9 @@ document.querySelector("#site-header").innerHTML = `
   <header>
     <div class="main-header">
       <div class="container header-inner">
-        <a class="brand" href="index.html" aria-label="Indigenous Future Coalition home">
+        <a class="brand" href="index.html" aria-label="Indigenous Futures Coalition home">
           <span class="brand-seal" aria-hidden="true"><img src="assets/indigenouslogo.png" alt=""></span>
-          <span class="brand-words"><strong>Indigenous Future Coalition</strong></span>
+          <span class="brand-words"><strong>Indigenous Futures Coalition</strong></span>
         </a>
         <div class="header-actions">
           <a href="communities.html"><strong>Work with us</strong></a>
@@ -86,7 +86,7 @@ document.querySelector("#site-footer").innerHTML = `
       <div>
         <div class="footer-brand-lockup">
           <img class="footer-logo" src="assets/indigenouslogo.png" alt="">
-          <p class="footer-brand">Indigenous Future<br><span>Coalition</span></p>
+          <p class="footer-brand">Indigenous Futures<br><span>Coalition</span></p>
         </div>
         <p class="footer-summary">A Bay Area student-led organization working with Native communities through tutoring, STEM, engineering, test preparation, and other community-led projects.</p>
       </div>
@@ -107,7 +107,7 @@ document.querySelector("#site-footer").innerHTML = `
       </div>
     </div>
     <div class="footer-bottom"><div class="container">
-      <span>© <span id="year"></span> Indigenous Future Coalition</span>
+      <span>© <span id="year"></span> Indigenous Futures Coalition</span>
       
     </div></div>
   </footer>
