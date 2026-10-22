@@ -172,16 +172,8 @@ window.addEventListener("pageshow", () => {
   document.body.classList.remove("page-leaving");
 });
 
-const countdown = document.querySelector("[data-countdown]");
-if (countdown) {
-  const countdownLabel = countdown.querySelector("[data-countdown-label]");
-  const dateLabel = countdown.querySelector("[data-countdown-date]");
-  const todayMessage = countdown.querySelector("[data-countdown-today]");
-  const countdownGrid = countdown.querySelector("[data-countdown-grid]");
-  const daysValue = countdown.querySelector("[data-countdown-days]");
-  const hoursValue = countdown.querySelector("[data-countdown-hours]");
-  const minutesValue = countdown.querySelector("[data-countdown-minutes]");
-
+const countdowns = document.querySelectorAll("[data-countdown]");
+if (countdowns.length) {
   const pacificDate = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/Los_Angeles",
     year: "numeric",
@@ -219,13 +211,6 @@ if (countdown) {
       day = getIndigenousPeoplesDay(year);
     }
 
-    if (countdownLabel) countdownLabel.textContent = isToday ? "Indigenous Peoples' Day" : "Next Indigenous Peoples' Day";
-    if (dateLabel) dateLabel.textContent = formatDate(year, day);
-    countdown.setAttribute("aria-label", isToday ? "Indigenous Peoples' Day" : "Time until Indigenous Peoples' Day");
-    if (todayMessage) todayMessage.hidden = !isToday;
-    if (countdownGrid) countdownGrid.hidden = isToday;
-    if (isToday) return;
-
     // The second Monday in October falls during Pacific Daylight Time.
     const target = Date.UTC(year, 9, day, 7);
     const totalMinutes = Math.ceil(Math.max(target - now.getTime(), 0) / 60000);
@@ -233,9 +218,17 @@ if (countdown) {
     const hours = Math.floor((totalMinutes % 1440) / 60);
     const minutes = totalMinutes % 60;
 
-    if (daysValue) daysValue.textContent = String(days);
-    if (hoursValue) hoursValue.textContent = String(hours).padStart(2, "0");
-    if (minutesValue) minutesValue.textContent = String(minutes).padStart(2, "0");
+    countdowns.forEach((countdown) => {
+      countdown.querySelector("[data-countdown-label]").textContent = isToday ? "Indigenous Peoples' Day" : "Next Indigenous Peoples' Day";
+      countdown.querySelector("[data-countdown-date]").textContent = formatDate(year, day);
+      countdown.querySelector("[data-countdown-today]").hidden = !isToday;
+      countdown.querySelector("[data-countdown-grid]").hidden = isToday;
+      countdown.setAttribute("aria-label", isToday ? "Indigenous Peoples' Day" : "Time until Indigenous Peoples' Day");
+      if (isToday) return;
+      countdown.querySelector("[data-countdown-days]").textContent = String(days);
+      countdown.querySelector("[data-countdown-hours]").textContent = String(hours).padStart(2, "0");
+      countdown.querySelector("[data-countdown-minutes]").textContent = String(minutes).padStart(2, "0");
+    });
   };
 
   updateCountdown();

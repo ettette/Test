@@ -208,46 +208,73 @@ h1, h2, h3 { letter-spacing: -0.018em; }
 .menu-button, .mobile-nav { display: none; }
 
 .indigenous-day-hero {
-  position: relative;
-  overflow: hidden;
-  color: #fff;
-  background:
-    linear-gradient(110deg, rgba(47, 32, 25, .94), rgba(143, 52, 56, .82) 48%, rgba(47, 115, 118, .7)),
-    url("assets/indigenous-countdown-bg.png") center 42% / cover no-repeat;
-  padding: 82px 0 72px;
-}
-
-.indigenous-day-hero::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  height: 8px;
-  background: linear-gradient(90deg, var(--gold), var(--teal), var(--burgundy));
+  background: var(--cream);
+  padding: 44px 0;
 }
 
 .indigenous-day-grid {
-  position: relative;
-  z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(340px, .85fr);
-  gap: 58px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
   align-items: center;
 }
 
-.indigenous-day-copy h1 {
-  max-width: 780px;
-  margin-bottom: 18px;
-  font-size: clamp(2.45rem, 4.7vw, 4.35rem);
-  line-height: 1.05;
+.indigenous-day-photo {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  object-position: center 46%;
 }
 
-.indigenous-day-copy > p:not(.hero-kicker) {
-  max-width: 720px;
-  margin-bottom: 0;
-  color: #f7ece6;
-  font-size: 1.03rem;
-  line-height: 1.72;
+.indigenous-day-copy h2 {
+  margin-bottom: 14px;
+  font-size: clamp(2.3rem, 3.6vw, 3.5rem);
+  line-height: 1.1;
 }
+
+.indigenous-day-copy > p {
+  max-width: 34rem;
+  margin-bottom: 20px;
+  color: #555654;
+  line-height: 1.65;
+}
+
+.home-countdown-date {
+  margin-bottom: 9px;
+  color: #555654;
+  font-size: .84rem;
+}
+
+.home-countdown-time {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+.home-countdown-time strong {
+  color: var(--ink);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-variant-numeric: tabular-nums;
+}
+
+.home-countdown-time[hidden] { display: none; }
+
+.home-countdown-today {
+  margin: 0;
+  color: var(--burgundy);
+  font-weight: 700;
+}
+
+.indigenous-day-link {
+  display: inline-block;
+  margin-top: 22px;
+  color: var(--burgundy);
+  font-weight: 700;
+}
+
+.indigenous-day-link:hover { text-decoration: underline; }
 
 .land-acknowledgement {
   background: #f9f7f2;
@@ -632,7 +659,8 @@ h1, h2, h3 { letter-spacing: -0.018em; }
   .mobile-nav-group span { color: #f2c96a; font-size: .72rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
   .mobile-nav-group a { padding-left: 14px; }
   .indigenous-day-grid, .land-acknowledgement-inner { grid-template-columns: 1fr; gap: 32px; }
-  .indigenous-day-hero { padding: 68px 0 58px; }
+  .indigenous-day-hero { padding: 38px 0; }
+  .indigenous-day-photo { height: 340px; }
   .action-grid { grid-template-columns: 1fr; }
   .action-card { min-height: 90px; }
   .-grid { grid-template-columns: repeat(2,1fr); }
@@ -652,8 +680,11 @@ h1, h2, h3 { letter-spacing: -0.018em; }
   .brand-seal { width: 49px; height: 49px; }
   .brand-words strong { font-size: .88rem; }
   .brand-words small { font-size: .61rem; }
-  .indigenous-day-hero { padding: 54px 0 48px; }
-  .indigenous-day-copy h1 { font-size: 2.48rem; }
+  .indigenous-day-hero { padding: 22px 0 34px; }
+  .indigenous-day-grid { gap: 24px; }
+  .indigenous-day-photo { height: 230px; }
+  .indigenous-day-copy h2 { font-size: 2.4rem; }
+  .home-countdown-time { gap: 14px; }
   .holiday-countdown { display: block; }
   .holiday-countdown-time { margin-top: 14px; gap: 14px; }
   .land-acknowledgement { padding: 34px 0; }
