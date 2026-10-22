@@ -117,26 +117,6 @@ document.querySelector("#site-footer").innerHTML = `
 
 document.querySelector("#year").textContent = new Date().getFullYear();
 
-document.body.classList.add("has-countdown-dock");
-document.body.insertAdjacentHTML(
-  "beforeend",
-  `
-    <aside class="countdown-dock" aria-label="Countdown to Indigenous Peoples' Day">
-      <a class="countdown-dock-main" href="holidays.html">
-        <span class="countdown-dock-label">Indigenous Peoples' Day</span>
-        <strong data-countdown-date>October 12, 2026</strong>
-      </a>
-      <div class="countdown-dock-grid" data-countdown>
-        <span><strong data-countdown-days>0</strong><em>Days</em></span>
-        <span><strong data-countdown-hours>0</strong><em>Hours</em></span>
-        <span><strong data-countdown-minutes>0</strong><em>Min</em></span>
-        <span><strong data-countdown-seconds>0</strong><em>Sec</em></span>
-      </div>
-      <p class="countdown-dock-today" data-countdown-today hidden>Today is Indigenous Peoples' Day</p>
-    </aside>
-  `
-);
-
 const menuButton = document.querySelector(".menu-button");
 const mobileNav = document.querySelector("#mobile-nav");
 menuButton.addEventListener("click", () => {
@@ -192,16 +172,32 @@ window.addEventListener("pageshow", () => {
   document.body.classList.remove("page-leaving");
 });
 
-const countdowns = document.querySelectorAll("[data-countdown]");
-if (countdowns.length) {
+const countdown = document.querySelector("[data-countdown]");
+if (countdown) {
+  const countdownLabel = countdown.querySelector("[data-countdown-label]");
+  const dateLabel = countdown.querySelector("[data-countdown-date]");
+  const todayMessage = countdown.querySelector("[data-countdown-today]");
+  const countdownGrid = countdown.querySelector("[data-countdown-grid]");
+  const daysValue = countdown.querySelector("[data-countdown-days]");
+  const hoursValue = countdown.querySelector("[data-countdown-hours]");
+  const minutesValue = countdown.querySelector("[data-countdown-minutes]");
+
+  const pacificDate = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Los_Angeles",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  });
+
   const getIndigenousPeoplesDay = (year) => {
-    const octoberFirst = new Date(year, 9, 1);
-    const daysUntilMonday = (8 - octoberFirst.getDay()) % 7;
-    return new Date(year, 9, 1 + daysUntilMonday + 7);
+    const octoberFirst = new Date(Date.UTC(year, 9, 1));
+    const daysUntilMonday = (8 - octoberFirst.getUTCDay()) % 7;
+    return 1 + daysUntilMonday + 7;
   };
 
-  const formatDate = (date) =>
-    date.toLocaleDateString("en-US", {
+  const formatDate = (year, day) =>
+    new Date(Date.UTC(year, 9, day)).toLocaleDateString("en-US", {
+      timeZone: "UTC",
       month: "long",
       day: "numeric",
       year: "numeric",
@@ -209,47 +205,40 @@ if (countdowns.length) {
 
   const updateCountdown = () => {
     const now = new Date();
-    let target = getIndigenousPeoplesDay(now.getFullYear());
-    target.setHours(0, 0, 0, 0);
-    const targetEnd = new Date(target);
-    targetEnd.setHours(23, 59, 59, 999);
+    const parts = Object.fromEntries(
+      pacificDate.formatToParts(now)
+        .filter((part) => part.type !== "literal")
+        .map((part) => [part.type, Number(part.value)])
+    );
+    let year = parts.year;
+    let day = getIndigenousPeoplesDay(year);
+    const isToday = parts.month === 10 && parts.day === day;
 
-    if (now > targetEnd) {
-      target = getIndigenousPeoplesDay(now.getFullYear() + 1);
-      target.setHours(0, 0, 0, 0);
+    if (parts.month > 10 || (parts.month === 10 && parts.day > day)) {
+      year += 1;
+      day = getIndigenousPeoplesDay(year);
     }
 
-    const isToday = now >= target && now <= targetEnd;
-    const distance = Math.max(target - now, 0);
-    const totalSeconds = Math.floor(distance / 1000);
-    const days = Math.floor(totalSeconds / 86400);
-    const hours = Math.floor((totalSeconds % 86400) / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
+    if (countdownLabel) countdownLabel.textContent = isToday ? "Indigenous Peoples' Day" : "Next Indigenous Peoples' Day";
+    if (dateLabel) dateLabel.textContent = formatDate(year, day);
+    countdown.setAttribute("aria-label", isToday ? "Indigenous Peoples' Day" : "Time until Indigenous Peoples' Day");
+    if (todayMessage) todayMessage.hidden = !isToday;
+    if (countdownGrid) countdownGrid.hidden = isToday;
+    if (isToday) return;
 
-    document.querySelectorAll("[data-countdown-date]").forEach((element) => {
-      element.textContent = isToday ? "Today" : formatDate(target);
-    });
-    document.querySelectorAll("[data-countdown]").forEach((element) => {
-      element.hidden = isToday;
-    });
-    document.querySelectorAll("[data-countdown-today]").forEach((element) => {
-      element.hidden = !isToday;
-    });
-    document.querySelectorAll("[data-countdown-days]").forEach((element) => {
-      element.textContent = String(days);
-    });
-    document.querySelectorAll("[data-countdown-hours]").forEach((element) => {
-      element.textContent = String(hours).padStart(2, "0");
-    });
-    document.querySelectorAll("[data-countdown-minutes]").forEach((element) => {
-      element.textContent = String(minutes).padStart(2, "0");
-    });
-    document.querySelectorAll("[data-countdown-seconds]").forEach((element) => {
-      element.textContent = String(seconds).padStart(2, "0");
-    });
+    // The second Monday in October falls during Pacific Daylight Time.
+    const target = Date.UTC(year, 9, day, 7);
+    const totalMinutes = Math.ceil(Math.max(target - now.getTime(), 0) / 60000);
+    const days = Math.floor(totalMinutes / 1440);
+    const hours = Math.floor((totalMinutes % 1440) / 60);
+    const minutes = totalMinutes % 60;
+
+    if (daysValue) daysValue.textContent = String(days);
+    if (hoursValue) hoursValue.textContent = String(hours).padStart(2, "0");
+    if (minutesValue) minutesValue.textContent = String(minutes).padStart(2, "0");
   };
 
   updateCountdown();
-  window.setInterval(updateCountdown, 1000);
+  window.setInterval(updateCountdown, 30000);
+  document.addEventListener("visibilitychange", updateCountdown);
 }
